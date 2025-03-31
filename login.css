@@ -1,0 +1,139 @@
+/* Portals Section */
+.portal-section {
+    padding: 3rem 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #3498db;
+}
+
+.portal-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.portal-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 350px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.portal-card:hover {
+    transform: translateY(-10px);
+}
+
+.portal-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.portal-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.portal-card p {
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.portal-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+/* Principal Portal Styles */
+.principal-portal {
+    border-top: 4px solid #e74c3c;
+}
+
+.principal-portal .portal-icon {
+    color: #e74c3c;
+}
+
+.principal-portal .portal-btn {
+    background: #e74c3c;
+    color: white;
+}
+
+.principal-portal .portal-btn:hover {
+    background: #c0392b;
+}
+
+/* Teacher Portal Styles */
+.teacher-portal {
+    border-top: 4px solid #2ecc71;
+}
+
+.teacher-portal .portal-icon {
+    color: #2ecc71;
+}
+
+.teacher-portal .portal-btn {
+    background: #2ecc71;
+    color: white;
+}
+
+.teacher-portal .portal-btn:hover {
+    background: #27ae60;
+}
+
+/* Student Portal Styles */
+.student-portal {
+    border-top: 4px solid #9b59b6;
+}
+
+.student-portal .portal-icon {
+    color: #9b59b6;
+}
+
+.student-portal .portal-btn {
+    background: #9b59b6;
+    color: white;
+}
+
+.student-portal .portal-btn:hover {
+    background: #8e44ad;
+}
+
+@media (max-width: 768px) {
+    .portal-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .portal-card {
+        width: 90%;
+    }
+}

@@ -1,0 +1,65 @@
+/* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .principal-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .principal-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #4a6fa5;
+        }
+
+        .principal-info {
+            text-align: center;
+        }
+
+        .principal-info h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .principal-info p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .principal-container {
+                flex-direction: row;
+                text-align: left;
+                align-items: flex-start;
+            }
+
+            .principal-info {
+                text-align: left;
+                padding-left: 20px;
+            }
+        }

@@ -1,0 +1,566 @@
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ffffff;
+    font-family: 'Georgia', serif;
+    overflow-x: hidden;
+}
+
+/* Logo Styles */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    padding: 5px 20px;
+}
+
+.fade-in-logo {
+    width: 100px;
+    height: auto;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+/* School Name Styles */
+.school-name-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.school-name {
+    color: #3a0404;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideFadeIn 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    font-size: min(8vw, 3rem);
+    padding: 0 20px;
+    position: relative;
+}
+
+.school-name::after {
+    content: '';
+    display: block;
+    width: 250px;
+    height: 3px;
+    background: #e74c3c;
+    margin: 10px auto;
+    transform: scaleX(0);
+    animation: underlineGrow 1.5s 1s ease-out forwards;
+}
+
+/* Admission Bar Styles */
+.admission-bar {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #1e88e5;
+    color: white;
+    padding: 10px 0;
+    text-decoration: none;
+    z-index: 1000;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.admission-marquee {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: scrollLeft 20s linear infinite;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.admission-bar:hover .admission-marquee,
+.admission-bar:active .admission-marquee {
+    animation-play-state: paused;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes underlineGrow {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Desktop Layout */
+@media (min-width: 992px) {
+    body {
+        align-items: flex-start;
+    }
+    .logo-container {
+        justify-content: flex-start;
+        padding-left: 10%;
+    }
+    .school-name {
+        text-align: left;
+        margin-left: 10%;
+    }
+    .school-name::after {
+        margin-left: 0;
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .fade-in-logo {
+        width: 130px;
+    }
+    .admission-marquee {
+        font-size: 14px;
+    }
+}
+/* Navbar Styles */
+.navbar {
+    background-color: #09549f;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .nav-container {
+    width: 100%;
+    order: 3;
+  }
+  
+  #nav-toggle {
+    display: none;
+  }
+  
+  .hamburger {
+    display: none;
+    color: rgb(70, 122, 174);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+  
+  .nav-menu {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-menu li {
+    position: relative;
+  }
+  
+  .nav-menu li a {
+    color: rgb(62, 5, 5);
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-menu li a:hover {
+    background-color: #1e88e5;
+  }
+  
+  /* Dropdown Styles */
+  .dropdown .submenu {
+    display: none;
+    position: absolute;
+    background-color: #051321;
+    min-width: 200px;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    padding: 0;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  
+  .dropdown:hover .submenu {
+    display: block;
+  }
+  
+  .submenu li {
+    width: 100%;
+  }
+  
+  .submenu li a {
+    padding: 12px 16px;
+    border-bottom: 1px solid #1e88e5;
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 992px) {
+    .hamburger {
+      display: block;
+      order: 2;
+    }
+    
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    #nav-toggle:checked ~ .nav-menu {
+      display: flex;
+    }
+    
+    .nav-menu li {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .dropdown .submenu {
+      position: static;
+      display: none;
+      width: 100%;
+    }
+    
+    .dropdown:hover .submenu {
+      display: none;
+    }
+    
+    #nav-toggle:checked ~ .nav-menu .dropdown .submenu {
+      display: none;
+    }
+    
+    .dropdown:active .submenu,
+    .dropdown:focus-within .submenu {
+      display: block;
+    }
+    
+    .arrow {
+      display: inline-block;
+    }
+  }
+  /* Login Button Styles */
+.login-item {
+    margin-left: auto; /* Pushes login to the right on desktop */
+  }
+  
+  .login-btn {
+    background-color: #e74c3c;
+    color: white !important;
+    padding: 8px 15px !important;
+    border-radius: 4px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .login-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+  }
+  
+  .login-btn i {
+    margin-right: 8px;
+    font-size: 0.9rem;
+  }
+  
+  /* Mobile Login Button Adjustments */
+  @media (max-width: 992px) {
+    .login-item {
+      margin-left: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .login-btn {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0 0 0;
+      padding: 10px !important;
+      width: 100%;
+    }
+  }
+  
+  /* Desktop Adjustments */
+  @media (min-width: 993px) {
+    .nav-menu {
+      align-items: center;
+    }
+  }
+  
+  /* Desktop Adjustments */
+  @media (min-width: 993px) {
+    .logo-container {
+      padding-left: 10%;
+    }
+    
+    .school-name {
+      text-align: left;
+      margin-left: 10%;
+    }
+    
+    .school-name::after {
+      margin-left: 0;
+    }
+    
+    .nav-container {
+      width: auto;
+      order: 2;
+    }
+  }
+  /* ===== FULL-WIDTH FOOTER STYLES ===== */
+.school-footer {
+    background: linear-gradient(135deg, #0a2a42 0%, #051321 100%);
+    color: #fff;
+    padding: 3rem 0 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    width: 100%;
+    overflow: hidden; /* Ensures no horizontal scroll */
+  }
+  
+  .footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    box-sizing: border-box; /* Prevents overflow */
+  }
+  
+  /* Contact Information */
+  .contact-info {
+    padding: 0 1rem;
+  }
+  
+  .contact-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    align-items: flex-start;
+  }
+  
+  .contact-item i {
+    color: #e74c3c;
+    font-size: 1.2rem;
+    margin-top: 0.25rem;
+  }
+  
+  .contact-item p, 
+  .contact-item a {
+    color: #d1d5db;
+    transition: all 0.3s ease;
+    margin: 0;
+  }
+  
+  .contact-item a:hover {
+    color: #3b82f6;
+    text-decoration: underline;
+  }
+  
+  /* Quick Links */
+  .quick-links {
+    padding: 0 1rem;
+  }
+  
+  .quick-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .quick-links li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .quick-links a {
+    color: #d1d5db;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.25rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .quick-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3b82f6;
+    transition: width 0.3s ease;
+  }
+  
+  .quick-links a:hover {
+    color: #3b82f6;
+    transform: translateX(5px);
+  }
+  
+  .quick-links a:hover::before {
+    width: 20px;
+  }
+  
+  /* Social Media & Map */
+  .social-media {
+    padding: 0 1rem;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .social-icons a:hover {
+    background: #3b82f6;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .location-map {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 200px;
+  }
+  
+  .location-map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  /* Section Headings */
+  .footer-section h3 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #e74c3c 0%, #3b82f6 100%);
+    border-radius: 3px;
+  }
+  
+  /* Copyright Section - Now Full Width */
+  .copyright {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 0.875rem;
+    color: #9ca3af;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .designer {
+    margin-top: 0.75rem;
+  }
+  
+  .designer span {
+    color: #e74c3c;
+    font-weight: 600;
+  }
+  
+  /* ===== FULL-WIDTH FIXES ===== */
+  body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Prevents horizontal scroll */
+  }
+  
+  /* ===== RESPONSIVE ADJUSTMENTS ===== */
+  @media (max-width: 1024px) {
+    .footer-container {
+      gap: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .footer-container {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    
+    .footer-section {
+      padding: 0;
+    }
+    
+    .footer-section h3 {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .school-footer {
+      padding: 2rem 0 0;
+    }
+    
+    .footer-container {
+      padding: 0 1rem;
+    }
+    
+    .social-icons {
+      justify-content: center;
+    }
+    
+    .contact-item {
+      grid-template-columns: 30px 1fr;
+    }
+  }
+ 
