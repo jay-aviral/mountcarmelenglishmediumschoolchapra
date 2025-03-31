@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal Dashboard - Mount Carmel School</title>
+    <link rel="stylesheet" href="frontend/css/principal'spage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="profile-section">
+                <img src="images/principal.jpg" alt="Principal Photo">
+                <h3>Principal Name</h3>
+                <p>Mount Carmel School</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="active"><a href="#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#teachers"><i class="fas fa-chalkboard-teacher"></i> Manage Teachers</a></li>
+                <li><a href="#students"><i class="fas fa-user-graduate"></i> Student Records</a></li>
+                <li><a href="#attendance"><i class="fas fa-clipboard-check"></i> Attendance</a></li>
+                <li><a href="#website"><i class="fas fa-globe"></i> Website Management</a></li>
+                <li><a href="#notices"><i class="fas fa-bullhorn"></i> Notices & Events</a></li>
+                <li><a href="#reports"><i class="fas fa-chart-bar"></i> Reports</a></li>
+                <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Principal Dashboard</h1>
+                <div class="date-time">
+                    <span id="current-date"></span>
+                    <span id="current-time"></span>
+                </div>
+            </div>
+
+            <!-- Dashboard Overview -->
+            <section id="dashboard" class="content-section">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon teachers">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Teachers</h3>
+                            <p class="count">42</p>
+                            <a href="#teachers">View All</a>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon students">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Students</h3>
+                            <p class="count">856</p>
+                            <a href="#students">View All</a>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon attendance">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Today's Attendance</h3>
+                            <p class="count">92%</p>
+                            <a href="#attendance">Details</a>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon notices">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Active Notices</h3>
+                            <p class="count">5</p>
+                            <a href="#notices">Manage</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="showAddTeacherModal()">
+                            <i class="fas fa-user-plus"></i> Add New Teacher
+                        </button>
+                        <button class="action-btn" onclick="showUploadNoticeModal()">
+                            <i class="fas fa-upload"></i> Upload New Notice
+                        </button>
+                        <button class="action-btn" onclick="showUpdateSlidesModal()">
+                            <i class="fas fa-images"></i> Update Website Slides
+                        </button>
+                        <button class="action-btn" onclick="showAttendanceReportModal()">
+                            <i class="fas fa-file-pdf"></i> Generate Monthly Report
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Manage Teachers Section -->
+            <section id="teachers" class="content-section" style="display:none;">
+                <h2>Manage Teachers</h2>
+                <div class="table-controls">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search teachers...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <button class="add-btn" onclick="showAddTeacherModal()">
+                        <i class="fas fa-plus"></i> Add Teacher
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="teachers-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Subject</th>
+                                <th>Class</th>
+                                <th>Contact</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>T2023001</td>
+                                <td>Rahul Sharma</td>
+                                <td>Mathematics</td>
+                                <td>IX-XII</td>
+                                <td>rahul@school.edu</td>
+                                <td><span class="status active">Active</span></td>
+                                <td>
+                                    <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <!-- More teacher rows would be dynamically loaded -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Website Management Section -->
+            <section id="website" class="content-section" style="display:none;">
+                <h2>Website Management</h2>
+                <div class="website-controls">
+                    <div class="control-card">
+                        <h3><i class="fas fa-images"></i> Homepage Slides</h3>
+                        <div class="current-slides">
+                            <div class="slide-item">
+                                <img src="images/slide1.jpg" alt="Current Slide 1">
+                                <button class="remove-btn"><i class="fas fa-trash"></i></button>
+                            </div>
+                            <!-- More slide items -->
+                        </div>
+                        <div class="upload-slides">
+                            <h4>Upload New Slides</h4>
+                            <input type="file" id="slide-upload" multiple accept="image/*">
+                            <button class="upload-btn" onclick="uploadSlides()">
+                                <i class="fas fa-upload"></i> Upload Slides
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="control-card">
+                        <h3><i class="fas fa-newspaper"></i> Homepage Content</h3>
+                        <div class="editor-section">
+                            <label>Welcome Message</label>
+                            <textarea id="welcome-message">Welcome to Mount Carmel English Medium School...</textarea>
+                            
+                            <label>Principal's Message</label>
+                            <textarea id="principal-message">It gives me great pleasure to welcome you...</textarea>
+                            
+                            <button class="save-btn" onclick="saveContent()">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notices & Events Section -->
+            <section id="notices" class="content-section" style="display:none;">
+                <h2>Notices & Events Management</h2>
+                <div class="notice-controls">
+                    <button class="add-btn" onclick="showUploadNoticeModal()">
+                        <i class="fas fa-plus"></i> Add New Notice
+                    </button>
+                </div>
+                <div class="notices-list">
+                    <div class="notice-item">
+                        <div class="notice-header">
+                            <h3>Annual Sports Day</h3>
+                            <span class="notice-date">15 Mar 2024</span>
+                        </div>
+                        <div class="notice-content">
+                            <p>All students are invited to participate in our Annual Sports Day...</p>
+                        </div>
+                        <div class="notice-actions">
+                            <button class="edit-btn"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                            <button class="feature-btn"><i class="fas fa-star"></i> Feature</button>
+                        </div>
+                    </div>
+                    <!-- More notice items -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Add Teacher Modal -->
+    <div id="addTeacherModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('addTeacherModal')">&times;</span>
+            <h2>Add New Teacher</h2>
+            <form id="teacherForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <select required>
+                            <option value="">Select Subject</option>
+                            <option>Mathematics</option>
+                            <option>Science</option>
+                            <option>English</option>
+                            <!-- More subjects -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Classes</label>
+                        <select multiple required>
+                            <option>Class I</option>
+                            <option>Class II</option>
+                            <!-- More classes -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Profile Photo</label>
+                    <input type="file" accept="image/*">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="closeModal('addTeacherModal')">Cancel</button>
+                    <button type="submit" class="submit-btn">Add Teacher</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Upload Notice Modal -->
+    <div id="uploadNoticeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('uploadNoticeModal')">&times;</span>
+            <h2>Upload New Notice</h2>
+            <form id="noticeForm">
+                <div class="form-group">
+                    <label>Notice Title</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Notice Content</label>
+                    <textarea rows="5" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Publish Date</label>
+                        <input type="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Expiry Date</label>
+                        <input type="date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Attachment (PDF/Image)</label>
+                    <input type="file">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="closeModal('uploadNoticeModal')">Cancel</button>
+                    <button type="submit" class="submit-btn">Publish Notice</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/principal.js"></script>
+</body>
+</html>
